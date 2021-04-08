@@ -1,21 +1,17 @@
 # <img src="public/icons/icon_48.png" width="45" align="left"> Video Speed Controller
 
-My Chrome Extension
+Speed controller is really simple but useful extension for Chrome browser. Basically it's manipulating video speed on the site, to slow down or speed up video up to 5x speed!
 
 ## Features
 
-- Feature 1
-- Feature 2
+- Change video speed even from 0.25 to 5.00.
+- Additional button for x1/x2/x3 speed.
+- Works on every site that is using video.
 
 ## Install
 
-[**Chrome** extension]() <!-- TODO: Add chrome extension link inside parenthesis -->
+[**Chrome** extension](https://chrome.google.com/webstore/detail/videospeedcontroller/oedcflfijnmdnkllbeoacabinnlgplmb)
 
 ## Contribution
 
 Suggestions and pull requests are welcomed!.
-
----
-
-This project was bootstrapped with [Chrome Extension CLI](https://github.com/dutiyesh/chrome-extension-cli)
-
