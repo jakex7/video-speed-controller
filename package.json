@@ -1,6 +1,6 @@
 {
   "name": "video-speed-controller",
-  "version": "0.1.1",
+  "version": "0.2.2",
   "description": "Speed up video on every site!",
   "private": true,
   "scripts": {

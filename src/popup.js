@@ -40,6 +40,7 @@ const restoreSpeedValue = () => {
     if(typeof speed.speed === 'undefined') {
       updateValue(["1.00"]);
     } else {
+      updateValue([speed.speed])
       superSlider.noUiSlider.set(speed.speed);
       // add active to button
       buttons.forEach(button => {
