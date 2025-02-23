@@ -1,50 +1,17 @@
-# React + TypeScript + Vite
+# <img src="public/icons/icon_48.png" width="45" align="left"> Video Speed Controller
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Speed controller is really simple but useful extension for Chrome browser. Basically it's manipulating video speed on the site, to slow down or speed up video up to 5x speed!
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Change video speed from 0.01 to 5.00.
+- Additional button for 0.5x/1x/1.5x/2x speed.
+- Works on every site that is using video.
 
-## Expanding the ESLint configuration
+## Install
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+[**Chrome** extension](https://chrome.google.com/webstore/detail/videospeedcontroller/oedcflfijnmdnkllbeoacabinnlgplmb)
 
-- Configure the top-level `parserOptions` property like this:
+## Contribution
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Suggestions and pull requests are welcomed!.
