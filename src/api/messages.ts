@@ -1,0 +1,4 @@
+export enum Messages {
+  SET_SPEED = "SET_SPEED",
+  TOGGLE_FORCE_CONTROLS = "TOGGLE_FORCE_CONTROLS",
+}
