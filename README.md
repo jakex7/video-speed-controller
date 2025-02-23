@@ -4,8 +4,8 @@ Speed controller is really simple but useful extension for Chrome browser. Basic
 
 ## Features
 
-- Change video speed even from 0.25 to 5.00.
-- Additional button for x1/x2/x3 speed.
+- Change video speed from 0.01 to 5.00.
+- Additional button for 0.5x/1x/1.5x/2x speed.
 - Works on every site that is using video.
 
 ## Install

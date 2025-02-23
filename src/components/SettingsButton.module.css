@@ -1,0 +1,18 @@
+.button {
+  position: absolute;
+  right: 0.5rem;
+  top: 1rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  opacity: 0.3;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  img {
+    width: 1.5rem;
+  }
+}
