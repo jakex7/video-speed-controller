@@ -1,14 +1,17 @@
 import { Messages } from "./messages";
 
-export const sendToCurrentTab = <T>(message: {
+export const sendToCurrentTab = <T = undefined>(message: {
   type: Messages;
-  payload: T;
+  payload?: unknown;
 }): Promise<T> => {
   return new Promise((resolve, reject) => {
     chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
       chrome.tabs.sendMessage(tab.id!, message, (response) => {
-        if (response) resolve(message.payload);
-        else reject("Message type unknown, got: " + message.type);
+        if (response == Messages.NOT_IMPLEMENTED) {
+          reject("Message type not implemented, got: " + message.type);
+        } else {
+          resolve(response);
+        }
       });
     });
   });

@@ -2,7 +2,7 @@
   display: inline-block;
   border-radius: 6px;
   border-style: solid;
-  border-color: var(--red);
+  border-color: var(--current-color);
   border-width: 2px;
   margin-top: 1.5rem;
 }
@@ -21,11 +21,11 @@
   color: inherit;
 
   &:hover {
-    background-color: rgba(var(--raw-red), 0.1);
+    background-color: rgba(var(--current-raw-color), 0.1);
   }
 
   &.current {
-    background-color: rgba(var(--raw-red), 0.8);
+    background-color: var(--current-light-color);
     color: #fff;
   }
 }

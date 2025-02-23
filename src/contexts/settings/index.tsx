@@ -2,42 +2,61 @@ import { PropsWithChildren, useContext, useEffect, useState } from "react";
 import { SettingsContext } from "./context";
 import { sendToCurrentTab } from "../../api/sender";
 import { Messages } from "../../api/messages";
+import { storage } from "../../api/storage";
 
 export const SettingsProvider = ({ children }: PropsWithChildren) => {
-  const [currentSpeed, setCurrentSpeed] = useState(1);
+  const [videoNotDetected, setVideoNotDetected] = useState(false);
+  const [currentSpeed, setCurrentSpeed] = useState<number | undefined>(
+    undefined
+  );
   const [increasedAccuracy, setIncreasedAccuracy] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const [forceControls, setForceControls] = useState(false);
   const accuracy = increasedAccuracy ? 0.01 : 0.25;
 
   useEffect(() => {
-    sendToCurrentTab({
-      type: Messages.SET_SPEED,
-      payload: currentSpeed,
+    // Get the current speed from storage and send it to the current tab
+    storage.get<number>("speed").then((speed) => {
+      setCurrentSpeed(speed || 1);
+      sendToCurrentTab({ type: Messages.SET_SPEED, payload: speed || 1 });
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // Get the increasedAccuracy from storage
+    storage.get<boolean>("increasedAccuracy").then(setIncreasedAccuracy);
+
+    // Detect if there is a video in the current tab
+    sendToCurrentTab<boolean>({ type: Messages.DETECT_VIDEO }).then(
+      (response) => setVideoNotDetected(!response)
+    );
   }, []);
 
   return (
     <SettingsContext.Provider
       value={{
+        videoNotDetected,
         currentSpeed,
         increasedAccuracy,
         accuracy,
         showSettings,
-        forceControls,
         setCurrentSpeed: (speed) =>
-          sendToCurrentTab({ type: Messages.SET_SPEED, payload: speed }).then(
-            setCurrentSpeed
-          ),
-
-        toggleIncreasedAccuracy: () => setIncreasedAccuracy((prev) => !prev),
+          storage
+            .set("speed", speed)
+            .then(() =>
+              sendToCurrentTab({ type: Messages.SET_SPEED, payload: speed })
+                .then(setCurrentSpeed)
+                .catch(console.error)
+            ),
+        toggleIncreasedAccuracy: () =>
+          storage
+            .set("increasedAccuracy", !increasedAccuracy)
+            .then(() => setIncreasedAccuracy((prev) => !prev)),
         toggleShowSettings: () => setShowSettings((prev) => !prev),
-        toggleForceControls: () =>
+        forceControls: () =>
           sendToCurrentTab({
             type: Messages.TOGGLE_FORCE_CONTROLS,
-            payload: !forceControls,
-          }).then(setForceControls),
+          }),
+        setCurrentColor: (color) =>
+          storage.set("color", color).then(() => {
+            document.querySelector("#root")!.className = color || "red";
+          }),
       }}
     >
       {children}

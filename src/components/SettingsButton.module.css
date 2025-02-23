@@ -13,7 +13,6 @@
   }
 
   img {
-    fill: var(--red);
     width: 1.5rem;
   }
 }

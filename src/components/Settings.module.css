@@ -46,12 +46,42 @@ input[type="checkbox"] {
     height: 0.65em;
     transform: scale(0);
     transition: 120ms transform ease-in-out;
-    background-color: var(--red);
+    background-color: var(--current-color);
     transform-origin: bottom left;
     clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
   }
 
   &:checked::before {
     transform: scale(1);
+  }
+}
+
+.button {
+  background-color: var(--current-light-color);
+  color: #fff;
+  font-size: 0.9rem;
+  font-family: inherit;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: var(--current-color);
+  }
+}
+
+.colorButton {
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background-color: var(--current-color);
+  border-radius: 1rem;
+  cursor: pointer;
+
+  &:not(:last-child) {
+    margin-right: 0.5rem;
   }
 }

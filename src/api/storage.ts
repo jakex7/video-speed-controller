@@ -2,7 +2,7 @@ export const storage = {
   get<T>(key: string): Promise<T> {
     return new Promise((resolve) => {
       chrome.storage.local.get([key], (res) => {
-        resolve(res as T);
+        resolve(res[key] as T);
       });
     });
   },

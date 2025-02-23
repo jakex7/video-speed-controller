@@ -6,7 +6,7 @@ export const Settings = () => {
     increasedAccuracy,
     toggleIncreasedAccuracy,
     forceControls,
-    toggleForceControls,
+    setCurrentColor,
   } = useSettings();
   return (
     <div>
@@ -22,14 +22,20 @@ export const Settings = () => {
         <label htmlFor="increasedAccuracy">Increased accuracy</label>
       </div>
       <div className={styles.row}>
-        <input
-          type="checkbox"
-          className={styles.checkbox}
-          checked={forceControls}
-          onChange={toggleForceControls}
-          id="forceControls"
-        />
-        <label htmlFor="forceControls">Force controls</label>
+        <button className={styles.button} onClick={forceControls}>
+          Force controls
+        </button>
+      </div>
+      <div className={styles.row}>
+        {["red", "orange", "yellow", "green", "blue", "indigo", "purple"].map(
+          (color) => (
+            <button
+              key={color}
+              className={[styles.colorButton, color].join(" ")}
+              onClick={() => setCurrentColor(color)}
+            />
+          )
+        )}
       </div>
     </div>
   );

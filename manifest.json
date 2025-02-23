@@ -12,5 +12,8 @@
             "js": ["content/index.ts"],
             "type": "module"
         }
+    ],
+    "permissions": [
+        "storage"
     ]
 }

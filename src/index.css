@@ -12,16 +12,31 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* declare variables for colors exactly like apple ones (for light and dark mode) */
-  --red: rgb(255, 59, 48);
-  --orange: rgb(255, 149, 0);
-  --yellow: rgb(255, 204, 0);
-  --green: rgb(52, 199, 89);
-  --teal: rgb(48, 176, 199);
-  --blue: rgb(0, 122, 255);
-  --indigo: rgb(88, 86, 214);
-  --purple: rgb(175, 82, 222);
-
   --raw-red: 255, 59, 48;
+  --raw-orange: 255, 149, 0;
+  --raw-yellow: 255, 204, 0;
+  --raw-green: 52, 199, 89;
+  --raw-blue: 0, 122, 255;
+  --raw-indigo: 88, 86, 214;
+  --raw-purple: 175, 82, 222;
+
+  --red: rgb(var(--raw-red));
+  --orange: rgb(var(--raw-orange));
+  --yellow: rgb(var(--raw-yellow));
+  --green: rgb(var(--raw-green));
+  --blue: rgb(var(--raw-blue));
+  --indigo: rgb(var(--raw-indigo));
+  --purple: rgb(var(--raw-purple));
+
+  --light-opacity: 0.8;
+
+  --light-red: rgba(var(--raw-red), var(--light-opacity));
+  --light-orange: rgba(var(--raw-orange), var(--light-opacity));
+  --light-yellow: rgba(var(--raw-yellow), var(--light-opacity));
+  --light-green: rgba(var(--raw-green), var(--light-opacity));
+  --light-blue: rgba(var(--raw-blue), var(--light-opacity));
+  --light-indigo: rgba(var(--raw-indigo), var(--light-opacity));
+  --light-purple: rgba(var(--raw-purple), var(--light-opacity));
 
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -40,4 +55,40 @@ body {
 #root {
   padding: 1.5rem;
   text-align: center;
+}
+
+.red {
+  --current-color: var(--red);
+  --current-raw-color: var(--raw-red);
+  --current-light-color: var(--light-red);
+}
+.orange {
+  --current-color: var(--orange);
+  --current-raw-color: var(--raw-orange);
+  --current-light-color: var(--light-orange);
+}
+.yellow {
+  --current-color: var(--yellow);
+  --current-raw-color: var(--raw-yellow);
+  --current-light-color: var(--light-yellow);
+}
+.green {
+  --current-color: var(--green);
+  --current-raw-color: var(--raw-green);
+  --current-light-color: var(--light-green);
+}
+.blue {
+  --current-color: var(--blue);
+  --current-raw-color: var(--raw-blue);
+  --current-light-color: var(--light-blue);
+}
+.indigo {
+  --current-color: var(--indigo);
+  --current-raw-color: var(--raw-indigo);
+  --current-light-color: var(--light-indigo);
+}
+.purple {
+  --current-color: var(--purple);
+  --current-raw-color: var(--raw-purple);
+  --current-light-color: var(--light-purple);
 }
