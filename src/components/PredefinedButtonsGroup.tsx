@@ -5,7 +5,7 @@ export const PredefinedButtonsGroup = () => {
   const { currentSpeed, setCurrentSpeed } = useSettings();
   return (
     <div className={styles.container}>
-      {[0.5, 1, 1.5, 2].map((speed) => (
+      {[0.5, 1, 1.5, 2, 2.5, 3].map((speed) => (
         <button
           className={[
             styles.button,
