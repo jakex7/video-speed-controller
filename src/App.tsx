@@ -24,7 +24,7 @@ function App() {
           marginBottom: "1rem",
         }}
       >
-        {(currentSpeed || 1).toFixed(2)}x
+        {Number(currentSpeed ?? 1).toFixed(2)}x
       </span>
       <Range />
       <PredefinedButtonsGroup />
