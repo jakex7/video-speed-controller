@@ -6,8 +6,9 @@ import { Settings } from "./components/Settings";
 import { SettingsButton } from "./components/SettingsButton";
 import { useSettings } from "./contexts/settings";
 
-storage.get<string>("color").then((color) => {
-  document.querySelector("#root")!.className = color || "blue";
+storage.get<string>("color", "blue").then((color) => {
+  const root = document.getElementById("root");
+  if (root) root.className = color;
 });
 
 function App() {

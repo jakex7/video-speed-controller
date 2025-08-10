@@ -11,7 +11,7 @@ export const Range = () => {
       min={increasedAccuracy ? 0.1 : 0.25}
       max={5}
       step={accuracy}
-      value={currentSpeed}
+      value={currentSpeed ?? 1}
       onChange={(e) => setCurrentSpeed(Number(e.target.value))}
     />
   );

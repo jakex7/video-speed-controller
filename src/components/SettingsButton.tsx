@@ -6,7 +6,7 @@ export const SettingsButton = () => {
   const { toggleShowSettings } = useSettings();
   return (
     <button className={styles.button} onClick={toggleShowSettings}>
-      <img src={settingsIcon} />
+      <img src={settingsIcon} title="Settings" />
     </button>
   );
 };

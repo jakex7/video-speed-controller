@@ -15,17 +15,19 @@ export const SettingsProvider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     // Get the current speed from storage and send it to the current tab
-    storage.get<number>("speed").then((speed) => {
-      setCurrentSpeed(speed || 1);
-      sendToCurrentTab({ type: Messages.SET_SPEED, payload: speed || 1 });
+    storage.get<number>("speed", 1).then((speed) => {
+      setCurrentSpeed(speed);
+      sendToCurrentTab({ type: Messages.SET_SPEED, payload: speed }).catch(
+        console.error
+      );
     });
     // Get the increasedAccuracy from storage
-    storage.get<boolean>("increasedAccuracy").then(setIncreasedAccuracy);
+    storage.get<boolean>("increasedAccuracy", false).then(setIncreasedAccuracy);
 
     // Detect if there is a video in the current tab
-    sendToCurrentTab<boolean>({ type: Messages.DETECT_VIDEO }).then(
-      (response) => setVideoNotDetected(!response)
-    );
+    sendToCurrentTab({ type: Messages.DETECT_VIDEO })
+      .then((response) => setVideoNotDetected(!response))
+      .catch(() => setVideoNotDetected(true));
   }, []);
 
   return (
@@ -52,10 +54,11 @@ export const SettingsProvider = ({ children }: PropsWithChildren) => {
         forceControls: () =>
           sendToCurrentTab({
             type: Messages.TOGGLE_FORCE_CONTROLS,
-          }),
+          }).catch(console.error),
         setCurrentColor: (color) =>
           storage.set("color", color).then(() => {
-            document.querySelector("#root")!.className = color || "red";
+            const root = document.getElementById("root");
+            if (root) root.className = color || "red";
           }),
       }}
     >
